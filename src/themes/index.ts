@@ -29,6 +29,8 @@ export const themes = {
     PLACEHOLDER: defaultColors.GRAY_300, // Placeholder text
     WHITE: defaultColors.WHITE, // White
     ICON: defaultColors.WHITE,
+    BARSTYLE: "light-content",
+    type: "dark",
   },
   light: {
     BACKGROUND: defaultColors.WHITE, // Light background
@@ -42,6 +44,8 @@ export const themes = {
     PLACEHOLDER: defaultColors.GRAY_300, // Placeholder text
     WHITE: defaultColors.WHITE, // White
     ICON: defaultColors.GRAY_700,
+    BARSTYLE: "dark-content",
+    type: "light",
   },
 };
 
@@ -57,3 +61,5 @@ export const fontsDefaults = {
     XL: 24,
   },
 };
+
+export type ThemeNames = keyof typeof themes;

@@ -22,7 +22,7 @@ export function PlayerCard({ name, onRemove }: Props) {
         color={theme.ICON}
       />
       <ThemedText style={styles.name}>{name}</ThemedText>
-      <ButtonIcon icon="close" type="red" />
+      <ButtonIcon onPress={onRemove} icon="close" type="red" />
     </ThemedView>
   );
 }

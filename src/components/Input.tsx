@@ -2,7 +2,11 @@ import { TextInput, StyleSheet, TextInputProps } from "react-native";
 import { useTheme } from "../contexts/ThemeContext";
 import { fontsDefaults } from "../themes";
 
-export function Input(props: TextInputProps) {
+type Props = TextInputProps & {
+  inputRef?: React.RefObject<TextInput>;
+};
+
+export function Input({ inputRef, ...rest }: Props) {
   const { theme } = useTheme();
 
   const color = theme.TEXT;
@@ -10,8 +14,9 @@ export function Input(props: TextInputProps) {
 
   return (
     <TextInput
+      ref={inputRef}
       style={[styles.container, { color, backgroundColor }]}
-      {...props}
+      {...rest}
     />
   );
 }

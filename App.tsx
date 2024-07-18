@@ -1,8 +1,7 @@
 import "@expo/metro-runtime";
 
-import { StyleSheet, StatusBar, useColorScheme } from "react-native";
-import { ThemedView } from "./src/components/ThemedView";
-import { Groups } from "./src/screens/Groups";
+import { StatusBar } from "react-native";
+
 import {
   useFonts,
   Roboto_400Regular,
@@ -10,20 +9,25 @@ import {
 } from "@expo-google-fonts/roboto";
 import { Loading } from "./src/components/Loading";
 import { ThemeContextProvider } from "./src/contexts/ThemeContext";
-import { NewGroup } from "./src/screens/NewGroup";
-import { Players } from "./src/screens/Players";
+import { NavigationContainer } from "@react-navigation/native";
+import { AppRoutes } from "./src/routes/app.routes";
+import { ThemedView } from "./src/components/ThemedView";
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
 
-  const selectedTheme = useColorScheme();
-
   return (
     <ThemeContextProvider>
-      <StatusBar
-        barStyle={selectedTheme === "dark" ? "light-content" : "dark-content"}
-      />
-      {fontsLoaded ? <Players></Players> : <Loading></Loading>}
+      <StatusBar />
+      {fontsLoaded ? (
+        <ThemedView style={{ flex: 1 }}>
+          <NavigationContainer>
+            <AppRoutes></AppRoutes>
+          </NavigationContainer>
+        </ThemedView>
+      ) : (
+        <Loading></Loading>
+      )}
     </ThemeContextProvider>
   );
 }

@@ -3,13 +3,25 @@ import { ThemedView } from "./ThemedView";
 import logoImg from "../assets/Logo.png";
 
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { useTheme } from "../contexts/ThemeContext";
 
-export function Header({ showBackButton = false }) {
+type Props = {
+  showBackButton?: boolean;
+};
+
+export function Header({ showBackButton = false }: Props) {
+  const navigation = useNavigation();
+  const { theme } = useTheme();
+  function handleGoBack() {
+    navigation.goBack();
+  }
+
   return (
     <ThemedView style={styles.container}>
       {showBackButton && (
-        <TouchableOpacity style={styles.backButton}>
-          <AntDesign name="caretleft" size={24} color="white" />
+        <TouchableOpacity onPress={handleGoBack} style={styles.backButton}>
+          <AntDesign name="caretleft" size={24} color={theme.ICON} />
         </TouchableOpacity>
       )}
       <Image style={styles.logo} source={logoImg}></Image>
