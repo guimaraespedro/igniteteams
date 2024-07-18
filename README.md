@@ -10,6 +10,6 @@
 
 ## Instalation
 * Clone the repo
-* run npm install
-* run npm run web - to run the app without the need of downloading anything.
+* run `npm install`
+* run `npm run web` - to run the app without the need of downloading anything.
 
